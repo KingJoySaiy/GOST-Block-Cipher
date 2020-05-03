@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/KingJoySaiy/workspace/GOST/const.h
+iostream
+-
+
+C:/KingJoySaiy/workspace/GOST/main.cpp
+iostream
+-
+ripemd256.h
+C:/KingJoySaiy/workspace/GOST/ripemd256.h
+
+C:/KingJoySaiy/workspace/GOST/ripemd256.h
+iostream
+-
+vector
+-
+cstring
+-
+const.h
+C:/KingJoySaiy/workspace/GOST/const.h
+
