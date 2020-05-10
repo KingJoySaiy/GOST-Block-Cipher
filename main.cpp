@@ -49,13 +49,24 @@ void blockCipherTest() {    //ok
     cout << res4 << ' ' << EncryptDecrypt::run(res4, key, 4, false) << endl;
 }
 
+void fileTest() {   //need to read & write file in binary mode
 
-int main() {
+    string x = "../233.txt", y = "../Sugar.mp3";
+    string key = "key";
+    EncryptDecrypt::run(x, key, 0, true, "asfd");
+    EncryptDecrypt::run(x, key, 0, false, "asfdfasf");
+//    EncryptDecrypt::run(y, key, 0, true, 1);
+//    EncryptDecrypt::run(y, key, 0, false, 1.1);
+}
+
+//text, key, mode, isEncrypt
+//FILE, key, mode, isEncrypt, anything
+int main(int argc, char * argv[]) {
 
 //    ripemdTest();
 //    gostDemoTest();
-    blockCipherTest();
-
+//    blockCipherTest();
+    fileTest();
 
     return 0;
 }

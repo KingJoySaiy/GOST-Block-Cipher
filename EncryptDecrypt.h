@@ -6,12 +6,11 @@
 #include "Modes/CFB.h"
 #include "Modes/OFB.h"
 #include "Modes/CTR.h"
-
-#include <exception>
+#include <fstream>
 
 class EncryptDecrypt {
 private:
-    static string runEncrypt(const string &plainText, const string &key, int mode) {
+    static string runEncrypt(const string &plainText, const string &key, const int &mode) {
 
         uint32_t message[8];
         ripemd256::run(key, message);   //get message by hashing key
@@ -43,7 +42,7 @@ private:
         return res;
     }
 
-    static string runDecrypt(const string &cipherText, const string &key, int mode) {
+    static string runDecrypt(const string &cipherText, const string &key, const int &mode) {
 
         uint32_t message[8];
         ripemd256::run(key, message);   //get message by hashing key
@@ -73,11 +72,51 @@ private:
 
 public:
     //global interface
-    static string run(const string &text, const string &key, int mode, bool isEncrypt) {
+    static string run(const string &text, const string &key, const int &mode, const bool &isEncrypt) {
 
-        //need to catch exception if mode not in [0, 5)
-        if (isEncrypt) return runEncrypt(text, key, mode);  //check is encryption or not
-        return runDecrypt(text, key, mode);
+        try {
+            if (mode < 0 or mode >= 5) {
+                throw "Mode Error";
+            }
+            if (isEncrypt) {
+                return runEncrypt(text, key, mode);  //check is encryption or not
+            }
+            return runDecrypt(text, key, mode);
+        } catch (const string &error) {
+            cout << error << endl;
+        }
+    }
+
+    template <typename T>
+    static void run(const string &FilePath, const string &key, const int &mode, const bool &isEncrypt, T anything) {
+
+        try {
+            if (mode < 0 or mode >= 5) throw "Mode not in[0, 5)!";
+            std::fstream file;
+            file.open(FilePath, std::ios::in);
+            if (file.fail()) {
+                throw "File not found!";
+            }
+
+            string text;
+            char c;
+            while (!file.eof()) {
+                if((c = file.get()) == EOF) continue;   //dismiss EOF
+                text.push_back(c);
+            }
+            file.close();
+
+            text = run(text, key, mode, isEncrypt);
+
+            file.open(FilePath, std::ios::out);
+            for (auto &c : text) {
+                file.put(c);
+            }
+            file.close();
+
+        } catch (const string &error) {
+            cout << error << endl;
+        }
     }
 
 };
