@@ -7,6 +7,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <queue>
 
 using std::pair;
 using std::make_pair;

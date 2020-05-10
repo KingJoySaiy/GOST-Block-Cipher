@@ -6,23 +6,41 @@
 class ripemd256 {
 private:
     //expand string to multiple of 512, each block512 contains 512 bits
-    static vector<RIPEMD::block512>  expand(string str) {    //expand word(highest bit first)
+    static vector<RIPEMD::block512>  expand(string str) {    //expand word
 
-        while (str.length() % 64) {  //append NULL in the back
-            str.push_back(0);
+        ////start padding
+        std::queue<bool> bit;
+        for (auto &c : str) {   //1 character as 8 bits
+            bit.push(c & 0x80);
+            bit.push(c & 0x40);
+            bit.push(c & 0x20);
+            bit.push(c & 0x10);
+            bit.push(c & 0x08);
+            bit.push(c & 0x04);
+            bit.push(c & 0x02);
+            bit.push(c & 0x01);
         }
+        std::bitset<64> len(bit.size());
+        bit.push(1);    //pad 1
+        while (bit.size() % 512 != 448) {   //pad 0 until 'size % 512 == 448'
+            bit.push(0);
+        }
+        for (int i = 0; i < 64; i++) {  //pad initial length (64 bits)
+            bit.push(len[i]);
+        }
+        ////end padding
 
-        vector<RIPEMD::block512> res;       //64 characters as a block512
-        RIPEMD::block512 tmp;
-        int id = 0;
-        for (int i = 0; i < str.length(); i++) {
-            tmp.x[id] = (tmp.x[id] << 8) + str[i];
-            if (i % 4 == 3) id++;
-            if (id == 16) {     //16 * 4 = 64 characters
-                res.push_back(tmp);
-                memset(tmp.x, 0, sizeof(tmp.x));
-                id = 0;
+        vector<RIPEMD::block512> res;   //result (512 bits as a block)
+        for (int i = 0; i < bit.size(); i += 512) {
+            RIPEMD::block512 tmp;
+            for (uint32_t id = 0, now = 0; id < 16; id++, now = 0) {
+                for (int ct = 32; ct--; ) {
+                    now = now * 2 + bit.front();
+                    bit.pop();
+                }
+                tmp.x[id] = now;
             }
+            res.push_back(tmp);
         }
         return res;
     }
