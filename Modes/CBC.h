@@ -1,7 +1,9 @@
 #ifndef GOST_CBC_H
 #define GOST_CBC_H
 
-#include "transform.h"
+#include <vector>
+
+using std::vector;
 
 class CBC {
 private:

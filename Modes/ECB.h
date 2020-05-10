@@ -1,7 +1,9 @@
 #ifndef GOST_ECB_H
 #define GOST_ECB_H
 
-#include "transform.h"
+#include <vector>
+
+using std::vector;
 
 class ECB {
 public:

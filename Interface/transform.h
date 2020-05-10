@@ -1,14 +1,17 @@
 #ifndef GOST_TRANSFORM_H
 #define GOST_TRANSFORM_H
 
-#include "../Algorithm/gostDemo.h"
-#include "../Algorithm/ripemd256.h"
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using std::string;
+using std::vector;
 
 class TRANSFORM {
 public:
     static string bit64ToHex16(uint64_t num) { //transform 64-bit to 16-hex
 
-//        cout << num << endl;
         string res;
         for (int ct = 16; ct; ct--) {
             if (isdigit(num % 16 + '0')) {
@@ -19,8 +22,6 @@ public:
             num >>= 4;
         }
         reverse(res.begin(), res.end());
-
-//        cout << res << endl;
         return res;
     }
 
@@ -63,25 +64,21 @@ public:
     static string resetGost(vector<uint64_t> texts) {   //undo the expand
 
         string res, tmp;
-        for (auto &text : texts) {
+        for (auto &text : texts) {  //append text to res
             tmp.clear();
             for (int i = 0; i < 8; i++) {
-//                cout << text % (1ULL << 8) << endl;
                 tmp.push_back(text % (1ULL << 8));
                 text >>= 8;
             }
             reverse(tmp.begin(), tmp.end());
-//            cout << tmp << endl;
             res.append(tmp);
         }
 
         for (int i = res.length() - 1; i >= 0; i--) {   //erase NULL at the end
             if (res[i] == 0) {
                 res.erase(res.end() - 1);
-//                cout << i << endl;
             } else break;
         }
-//        cout << res.size() << endl;
         return res;
     }
 };

@@ -1,11 +1,12 @@
 #ifndef GOST_ENCRYPTDECRYPT_H
 #define GOST_ENCRYPTDECRYPT_H
 
-#include "Modes/ECB.h"
-#include "Modes/CBC.h"
-#include "Modes/CFB.h"
-#include "Modes/OFB.h"
-#include "Modes/CTR.h"
+#include "../Modes/ECB.h"
+#include "../Modes/CBC.h"
+#include "../Modes/CFB.h"
+#include "../Modes/OFB.h"
+#include "../Modes/CTR.h"
+#include "transform.h"
 #include <fstream>
 
 class EncryptDecrypt {
@@ -87,6 +88,7 @@ public:
         }
     }
 
+    //consider as File-path if contains 5 parameters
     template <typename T>
     static void run(const string &FilePath, const string &key, const int &mode, const bool &isEncrypt, T anything) {
 
@@ -100,7 +102,7 @@ public:
 
             string text;
             char c;
-            while (!file.eof()) {
+            while (!file.eof()) {   //read file
                 if((c = file.get()) == EOF) continue;   //dismiss EOF
                 text.push_back(c);
             }
@@ -109,7 +111,7 @@ public:
             text = run(text, key, mode, isEncrypt);
 
             file.open(FilePath, std::ios::out);
-            for (auto &c : text) {
+            for (auto &c : text) {  //write back to the file
                 file.put(c);
             }
             file.close();

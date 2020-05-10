@@ -2,7 +2,7 @@
 
 #include "Algorithm/ripemd256.h"
 #include "Algorithm/gostDemo.h"
-#include "EncryptDecrypt.h"
+#include "Interface/EncryptDecrypt.h"
 
 using namespace std;
 
@@ -65,8 +65,8 @@ int main(int argc, char * argv[]) {
 
 //    ripemdTest();
 //    gostDemoTest();
-//    blockCipherTest();
-    fileTest();
+    blockCipherTest();
+//    fileTest();
 
     return 0;
 }

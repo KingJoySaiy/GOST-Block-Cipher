@@ -1,7 +1,9 @@
 #ifndef GOST_CTR_H
 #define GOST_CTR_H
 
-#include "transform.h"
+#include <vector>
+
+using std::vector;
 
 class CTR {
     const static uint64_t mod = uint64_t(1e9 + 7);  //set a module

@@ -1,7 +1,9 @@
 #ifndef GOST_CFB_H
 #define GOST_CFB_H
 
-#include "transform.h"
+#include <vector>
+
+using std::vector;
 
 class CFB {
 private:

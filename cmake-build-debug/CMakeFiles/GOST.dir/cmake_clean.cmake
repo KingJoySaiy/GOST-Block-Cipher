@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/GOST.dir/main.cpp.obj"
-  "CMakeFiles/GOST.dir/test.cpp.obj"
   "GOST.exe"
   "GOST.exe.manifest"
   "GOST.pdb"

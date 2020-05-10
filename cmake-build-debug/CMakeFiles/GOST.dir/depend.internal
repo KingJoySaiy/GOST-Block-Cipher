@@ -5,13 +5,11 @@ CMakeFiles/GOST.dir/main.cpp.obj
  C:/KingJoySaiy/workspace/GOST/Algorithm/const.h
  C:/KingJoySaiy/workspace/GOST/Algorithm/gostDemo.h
  C:/KingJoySaiy/workspace/GOST/Algorithm/ripemd256.h
- C:/KingJoySaiy/workspace/GOST/EncryptDecrypt.h
+ C:/KingJoySaiy/workspace/GOST/Interface/EncryptDecrypt.h
+ C:/KingJoySaiy/workspace/GOST/Interface/transform.h
  C:/KingJoySaiy/workspace/GOST/Modes/CBC.h
  C:/KingJoySaiy/workspace/GOST/Modes/CFB.h
  C:/KingJoySaiy/workspace/GOST/Modes/CTR.h
  C:/KingJoySaiy/workspace/GOST/Modes/ECB.h
  C:/KingJoySaiy/workspace/GOST/Modes/OFB.h
- C:/KingJoySaiy/workspace/GOST/Modes/transform.h
  C:/KingJoySaiy/workspace/GOST/main.cpp
-CMakeFiles/GOST.dir/test.cpp.obj
- C:/KingJoySaiy/workspace/GOST/test.cpp

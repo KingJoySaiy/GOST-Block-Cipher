@@ -1,7 +1,9 @@
 #ifndef GOST_OFB_H
 #define GOST_OFB_H
 
-#include "transform.h"
+#include <vector>
+
+using std::vector;
 
 class OFB {
 private:

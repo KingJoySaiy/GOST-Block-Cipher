@@ -4,14 +4,12 @@
 CMakeFiles/GOST.dir/main.cpp.obj: ../Algorithm/const.h
 CMakeFiles/GOST.dir/main.cpp.obj: ../Algorithm/gostDemo.h
 CMakeFiles/GOST.dir/main.cpp.obj: ../Algorithm/ripemd256.h
-CMakeFiles/GOST.dir/main.cpp.obj: ../EncryptDecrypt.h
+CMakeFiles/GOST.dir/main.cpp.obj: ../Interface/EncryptDecrypt.h
+CMakeFiles/GOST.dir/main.cpp.obj: ../Interface/transform.h
 CMakeFiles/GOST.dir/main.cpp.obj: ../Modes/CBC.h
 CMakeFiles/GOST.dir/main.cpp.obj: ../Modes/CFB.h
 CMakeFiles/GOST.dir/main.cpp.obj: ../Modes/CTR.h
 CMakeFiles/GOST.dir/main.cpp.obj: ../Modes/ECB.h
 CMakeFiles/GOST.dir/main.cpp.obj: ../Modes/OFB.h
-CMakeFiles/GOST.dir/main.cpp.obj: ../Modes/transform.h
 CMakeFiles/GOST.dir/main.cpp.obj: ../main.cpp
-
-CMakeFiles/GOST.dir/test.cpp.obj: ../test.cpp
 

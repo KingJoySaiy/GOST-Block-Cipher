@@ -91,7 +91,10 @@
 		<Unit filename="C:/KingJoySaiy/workspace/GOST/Algorithm/ripemd256.h">
 			<Option target="GOST"/>
 		</Unit>
-		<Unit filename="C:/KingJoySaiy/workspace/GOST/EncryptDecrypt.h">
+		<Unit filename="C:/KingJoySaiy/workspace/GOST/Interface/EncryptDecrypt.h">
+			<Option target="GOST"/>
+		</Unit>
+		<Unit filename="C:/KingJoySaiy/workspace/GOST/Interface/transform.h">
 			<Option target="GOST"/>
 		</Unit>
 		<Unit filename="C:/KingJoySaiy/workspace/GOST/Modes/CBC.h">
@@ -109,13 +112,7 @@
 		<Unit filename="C:/KingJoySaiy/workspace/GOST/Modes/OFB.h">
 			<Option target="GOST"/>
 		</Unit>
-		<Unit filename="C:/KingJoySaiy/workspace/GOST/Modes/transform.h">
-			<Option target="GOST"/>
-		</Unit>
 		<Unit filename="C:/KingJoySaiy/workspace/GOST/main.cpp">
-			<Option target="GOST"/>
-		</Unit>
-		<Unit filename="C:/KingJoySaiy/workspace/GOST/test.cpp">
 			<Option target="GOST"/>
 		</Unit>
 		<Unit filename="C:/KingJoySaiy/workspace/GOST/CMakeLists.txt">
