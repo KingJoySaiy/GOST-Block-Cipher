@@ -8,8 +8,7 @@
 using std::string;
 using std::vector;
 
-class TRANSFORM {
-public:
+namespace TRANSFORM {
     static string bit64ToHex16(uint64_t num) { //transform 64-bit to 16-hex
 
         string res;
@@ -45,7 +44,7 @@ public:
 
     static vector<uint64_t> expandGost(string str) {    //expand string to 64-bit
 
-        while(str.length() % 8) {  //append 0 in the back
+        while (str.length() % 8) {  //append 0 in the back
             str.push_back(0);
         }
 
@@ -80,6 +79,31 @@ public:
             } else break;
         }
         return res;
+    }
+
+    static string readFile(const string &filePath) {
+        std::fstream file;
+        file.open(filePath, std::ios::in);
+        if (file.fail()) {
+            throw "File not found!";
+        }
+        string text;
+        char c;
+        while (!file.eof()) {   //read file
+            if ((c = file.get()) == EOF) continue;   //dismiss EOF
+            text.push_back(c);
+        }
+        file.close();
+        return text;
+    }
+
+    static void writeFile(const string &filePath, const string &text) {
+        std::fstream file;
+        file.open(filePath, std::ios::out);
+        for (auto &c : text) {  //write back to the file
+            file.put(c);
+        }
+        file.close();
     }
 };
 

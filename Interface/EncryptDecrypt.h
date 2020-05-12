@@ -90,32 +90,11 @@ public:
 
     //consider as File-path if contains 5 parameters
     template <typename T>
-    static void run(const string &FilePath, const string &key, const int &mode, const bool &isEncrypt, T anything) {
+    static void run(const string &filePath, const string &key, const int &mode, const bool &isEncrypt, T anything) {
 
         try {
-            if (mode < 0 or mode >= 5) throw "Mode not in[0, 5)!";
-            std::fstream file;
-            file.open(FilePath, std::ios::in);
-            if (file.fail()) {
-                throw "File not found!";
-            }
-
-            string text;
-            char c;
-            while (!file.eof()) {   //read file
-                if((c = file.get()) == EOF) continue;   //dismiss EOF
-                text.push_back(c);
-            }
-            file.close();
-
-            text = run(text, key, mode, isEncrypt);
-
-            file.open(FilePath, std::ios::out);
-            for (auto &c : text) {  //write back to the file
-                file.put(c);
-            }
-            file.close();
-
+            string text = TRANSFORM::readFile(filePath);    //read file
+            TRANSFORM::writeFile(filePath, run(text, key, mode, isEncrypt));    //run & write file
         } catch (const string &error) {
             cout << error << endl;
         }

@@ -88,11 +88,6 @@ public:
             message[i] = RIPEMD::iniNumber[i];
         }
         compress(expand(str), message); //expand the string, then compress
-
-//        for (int i = 0; i < 8; i++) {
-//            cout << message[i] << endl;
-//        }
-//        cout << endl;
     }
 };
 
