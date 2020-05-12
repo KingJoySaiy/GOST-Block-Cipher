@@ -44,9 +44,12 @@ namespace TRANSFORM {
 
     static vector<uint64_t> expandGost(string str) {    //expand string to 64-bit
 
+        int zero = 0;
         while (str.length() % 8) {  //append 0 in the back
             str.push_back(0);
+            zero++;
         }
+        str.append(bit64ToHex16(zero));
 
         vector<uint64_t> res;   //8 characters as a block64
         uint64_t tmp = 0;
@@ -73,10 +76,10 @@ namespace TRANSFORM {
             res.append(tmp);
         }
 
-        for (int i = res.length() - 1; i >= 0; i--) {   //erase NULL at the end
-            if (res[i] == 0) {
-                res.erase(res.end() - 1);
-            } else break;
+        int ct = hex16Tobit64(res.substr(res.length() - 16, 16))[0];
+        res.erase(res.length() - 16, 16);
+        while (ct--) {  //erase NULL at the end
+            res.erase(res.end() - 1);
         }
         return res;
     }

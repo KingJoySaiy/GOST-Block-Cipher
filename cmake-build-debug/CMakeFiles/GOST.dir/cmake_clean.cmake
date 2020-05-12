@@ -1,9 +1,7 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/GOST.dir/main.cpp.obj"
-  "GOST.exe"
-  "GOST.exe.manifest"
+  "CMakeFiles/GOST.dir/main.cpp.o"
   "GOST.pdb"
-  "libGOST.dll.a"
+  "GOST"
 )
 
 # Per-language clean rules from dependency scanning.

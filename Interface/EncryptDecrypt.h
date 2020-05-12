@@ -93,8 +93,8 @@ public:
     static void run(const string &filePath, const string &key, const int &mode, const bool &isEncrypt, T anything) {
 
         try {
-            string text = TRANSFORM::readFile(filePath);    //read file
-            TRANSFORM::writeFile(filePath, run(text, key, mode, isEncrypt));    //run & write file
+            string text = TRANSFORM::readFile(filePath);
+            TRANSFORM::writeFile(filePath, run(text, key, mode, isEncrypt));
         } catch (const string &error) {
             cout << error << endl;
         }
