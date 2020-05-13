@@ -26,6 +26,7 @@ namespace TRANSFORM {
 
     static vector<uint64_t> hex16Tobit64(string hex) {  //transform hex to 64-bit array
 
+        if (hex.length() % 16) throw "incorrect cipher-text";
         vector<uint64_t> res;
         uint64_t tmp = 0;
         for (int i = 0; i < hex.length(); i++) {
@@ -49,7 +50,6 @@ namespace TRANSFORM {
             str.push_back(0);
             zero++;
         }
-        str.append(bit64ToHex16(zero));
 
         vector<uint64_t> res;   //8 characters as a block64
         uint64_t tmp = 0;
@@ -60,10 +60,14 @@ namespace TRANSFORM {
                 tmp = 0;
             }
         }
+        res.push_back(zero);
         return res;
     }
 
     static string resetGost(vector<uint64_t> texts) {   //undo the expand
+
+        int ct = *texts.rbegin();
+        texts.pop_back();
 
         string res, tmp;
         for (auto &text : texts) {  //append text to res
@@ -76,15 +80,18 @@ namespace TRANSFORM {
             res.append(tmp);
         }
 
-        int ct = hex16Tobit64(res.substr(res.length() - 16, 16))[0];
-        res.erase(res.length() - 16, 16);
-        while (ct--) {  //erase NULL at the end
-            res.erase(res.end() - 1);
+        if (ct > res.size()) {
+            throw "incorrect cipher-text";
+        } else {
+            while (ct--) {  //erase NULL at the end
+                res.erase(res.end() - 1);
+            }
         }
         return res;
     }
 
     static string readFile(const string &filePath) {
+
         std::fstream file;
         file.open(filePath, std::ios::in);
         if (file.fail()) {
@@ -100,13 +107,15 @@ namespace TRANSFORM {
         return text;
     }
 
-    static void writeFile(const string &filePath, const string &text) {
+    static string writeFile(const string &filePath, const string &text) {
+
         std::fstream file;
         file.open(filePath, std::ios::out);
         for (auto &c : text) {  //write back to the file
             file.put(c);
         }
         file.close();
+        return "succeed to write the file";
     }
 };
 

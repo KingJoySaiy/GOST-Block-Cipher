@@ -73,33 +73,23 @@ private:
 
 public:
     //global interface
-    static string run(const string &text, const string &key, const int &mode, const bool &isEncrypt) {
+    static string run(const string &text, const string &key, const string &mode,
+                      const bool &isDecrypt, const bool &isFile) {
 
-        try {
-            if (mode < 0 or mode >= 5) {
-                throw "Mode Error";
-            }
-            if (isEncrypt) {
-                return runEncrypt(text, key, mode);  //check is encryption or not
-            }
-            return runDecrypt(text, key, mode);
-        } catch (const string &error) {
-            cout << error << endl;
+        if (!mode.compare("0") and !mode.compare("1") and !mode.compare("2")
+            and !mode.compare("3") and !mode.compare("4")) {
+            throw "Mode ERROR";
+        }
+
+        if (isFile) {
+            string realText = TRANSFORM::readFile(text);
+            return TRANSFORM::writeFile(text, run(realText, key, mode, isDecrypt, false));
+        } else if (isDecrypt) {
+            return runDecrypt(text, key, atoi(mode.c_str()));  //check is encryption or not
+        } else {
+            return runEncrypt(text, key, atoi(mode.c_str()));
         }
     }
-
-    //consider as File-path if contains 5 parameters
-    template <typename T>
-    static void run(const string &filePath, const string &key, const int &mode, const bool &isEncrypt, T anything) {
-
-        try {
-            string text = TRANSFORM::readFile(filePath);
-            TRANSFORM::writeFile(filePath, run(text, key, mode, isEncrypt));
-        } catch (const string &error) {
-            cout << error << endl;
-        }
-    }
-
 };
 
 #endif //GOST_ENCRYPTDECRYPT_H

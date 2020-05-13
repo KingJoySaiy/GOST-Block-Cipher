@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/joy/233/workspace/GOST-Block-Cipher/main.cpp" "/home/joy/233/workspace/GOST-Block-Cipher/cmake-build-debug/CMakeFiles/GOST.dir/main.cpp.o"
+  "C:/KingJoySaiy/workspace/GOST-Block-Cipher/main.cpp" "C:/KingJoySaiy/workspace/GOST-Block-Cipher/cmake-build-debug/CMakeFiles/GOST.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
