@@ -26,7 +26,9 @@ namespace TRANSFORM {
 
     static vector<uint64_t> hex16Tobit64(string hex) {  //transform hex to 64-bit array
 
-        if (hex.length() % 16) throw "incorrect cipher-text";
+        if (hex.length() % 16 or hex.empty()) {
+            throw "incorrect cipher-text";
+        }
         vector<uint64_t> res;
         uint64_t tmp = 0;
         for (int i = 0; i < hex.length(); i++) {
@@ -84,6 +86,7 @@ namespace TRANSFORM {
             throw "incorrect cipher-text";
         } else {
             while (ct--) {  //erase NULL at the end
+                if (res[res.size() - 1] != 0) throw "incorrect cipher-text";
                 res.erase(res.end() - 1);
             }
         }
@@ -95,7 +98,7 @@ namespace TRANSFORM {
         std::fstream file;
         file.open(filePath, std::ios::in);
         if (file.fail()) {
-            throw "File not found!";
+            throw "fail to read file";
         }
         string text;
         char c;

@@ -67,9 +67,11 @@ void specialTest() {
 
     string x = "asoinfu124", key = "233";
     string goodPath = "../233.txt", badPath = "test.txt";
-    cout << EncryptDecrypt::run(x, key, "1", true, false) << endl;
+//    cout << EncryptDecrypt::run(x, key, "1", true, false) << endl;
 //    cout << EncryptDecrypt::run(goodPath, key, "2", true, true) << endl;
 //    cout << EncryptDecrypt::run(badPath, key, "3", false, true) << endl;
+//    cout << EncryptDecrypt::run("166cf3f52702055c", "", "1", true, false) << endl;
+    cout << EncryptDecrypt::run("", "", "0", true, false) << endl;
 }
 
 

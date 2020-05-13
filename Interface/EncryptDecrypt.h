@@ -47,7 +47,6 @@ private:
 
         uint32_t message[8];
         ripemd256::run(key, message);   //get message by hashing key
-
         vector<uint64_t> texts = TRANSFORM::hex16Tobit64(cipherText);   //transform hex to array of 64-bit
 
         switch (mode) {
@@ -76,11 +75,10 @@ public:
     static string run(const string &text, const string &key, const string &mode,
                       const bool &isDecrypt, const bool &isFile) {
 
-        if (!mode.compare("0") and !mode.compare("1") and !mode.compare("2")
-            and !mode.compare("3") and !mode.compare("4")) {
-            throw "Mode ERROR";
+        if (mode.compare("0") and mode.compare("1") and mode.compare("2")
+            and mode.compare("3") and mode.compare("4")) {
+            throw "mode error";
         }
-
         if (isFile) {
             string realText = TRANSFORM::readFile(text);
             return TRANSFORM::writeFile(text, run(realText, key, mode, isDecrypt, false));
