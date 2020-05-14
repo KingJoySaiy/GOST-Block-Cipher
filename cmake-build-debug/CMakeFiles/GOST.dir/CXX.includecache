@@ -43,6 +43,8 @@ C:/KingJoySaiy/workspace/GOST-Block-Cipher/Modes/OFB.h
 C:/KingJoySaiy/workspace/GOST-Block-Cipher/Modes/CTR.h
 transform.h
 C:/KingJoySaiy/workspace/GOST-Block-Cipher/Interface/transform.h
+../Algorithm/ripemd256.h
+C:/KingJoySaiy/workspace/GOST-Block-Cipher/Algorithm/ripemd256.h
 fstream
 -
 
@@ -57,22 +59,32 @@ algorithm
 C:/KingJoySaiy/workspace/GOST-Block-Cipher/Modes/CBC.h
 vector
 -
+../Algorithm/gostDemo.h
+C:/KingJoySaiy/workspace/GOST-Block-Cipher/Algorithm/gostDemo.h
 
 C:/KingJoySaiy/workspace/GOST-Block-Cipher/Modes/CFB.h
 vector
 -
+../Algorithm/gostDemo.h
+C:/KingJoySaiy/workspace/GOST-Block-Cipher/Algorithm/gostDemo.h
 
 C:/KingJoySaiy/workspace/GOST-Block-Cipher/Modes/CTR.h
 vector
 -
+../Algorithm/gostDemo.h
+C:/KingJoySaiy/workspace/GOST-Block-Cipher/Algorithm/gostDemo.h
 
 C:/KingJoySaiy/workspace/GOST-Block-Cipher/Modes/ECB.h
 vector
 -
+../Algorithm/gostDemo.h
+C:/KingJoySaiy/workspace/GOST-Block-Cipher/Algorithm/gostDemo.h
 
 C:/KingJoySaiy/workspace/GOST-Block-Cipher/Modes/OFB.h
 vector
 -
+../Algorithm/gostDemo.h
+C:/KingJoySaiy/workspace/GOST-Block-Cipher/Algorithm/gostDemo.h
 
 C:/KingJoySaiy/workspace/GOST-Block-Cipher/Test/test.h
 bits/stdc++.h
@@ -87,6 +99,8 @@ C:/KingJoySaiy/workspace/GOST-Block-Cipher/Interface/EncryptDecrypt.h
 C:/KingJoySaiy/workspace/GOST-Block-Cipher/main.cpp
 bits/stdc++.h
 -
+Interface/EncryptDecrypt.h
+C:/KingJoySaiy/workspace/GOST-Block-Cipher/Interface/EncryptDecrypt.h
 Test/test.h
 C:/KingJoySaiy/workspace/GOST-Block-Cipher/Test/test.h
 

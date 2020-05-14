@@ -2,6 +2,7 @@
 #define GOST_CBC_H
 
 #include <vector>
+#include "../Algorithm/gostDemo.h"
 
 using std::vector;
 

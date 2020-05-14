@@ -7,6 +7,7 @@
 #include "../Modes/OFB.h"
 #include "../Modes/CTR.h"
 #include "transform.h"
+#include "../Algorithm/ripemd256.h"
 #include <fstream>
 
 class EncryptDecrypt {
