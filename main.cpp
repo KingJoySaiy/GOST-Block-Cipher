@@ -4,54 +4,37 @@
 
 using namespace std;
 
-void test() {
-    
-    clock_t start = clock(), end;
-    string filePath = "C:\\Users\\Joy\\Desktop\\testFile";
-    string key = "233", mode = "3";
-    for (int i = 0; i < 10; i++) {
-        try {
-            //succeed to write the file
-            cout << EncryptDecrypt::run(filePath, key, mode, false, true) << endl;
-        } catch (const char *error) {
-            cout << error << endl;
-        }
-    }
-    end = clock();
-    cout << "The run time is:" <<(double)(end - start) / CLOCKS_PER_SEC << "s" << endl << endl;
-}
-
 int main(int argc, char *argv[]) {
 
-//    test();
-    string select, text, key, mode;
-    while (true) {
-        cout << "select operation: 0(encrypt string), 1(encrypt file), " << endl;
-        cout << "                  2(decrypt string), 3(decrypt file), other(end)" << endl;
-        getline(cin, select);
-        if (select.compare("0") and select.compare("1") and select.compare("2") and select.compare("3")) {
-            break;
-        }
-
-        cout << "input text/file-path: ";
-        getline(cin, text);
-        cout << "input key: ";
-        getline(cin, key);
-        cout << "input mode(0:ECB, 1:CBC, 2:CFB, 3:OFB, 4:CTR): ";
-        getline(cin, mode);
-        cout << "result: ";
-
-		clock_t start = clock(), end;
-
-        try {
-            cout << EncryptDecrypt::run(text, key, mode, atoi(select.c_str()) & 2, atoi(select.c_str()) & 1) << endl;
-        } catch (const char *error) {
-            cout << error << endl;
-        }
-        end = clock();
-        cout << "The run time is:" <<(double)(end - start) / CLOCKS_PER_SEC << "s" << endl << endl;
-
-    }
+    fileTest();
+//    string select, text, key, mode;
+//    while (true) {
+//        cout << "select operation: 0(encrypt string), 1(encrypt file), " << endl;
+//        cout << "                  2(decrypt string), 3(decrypt file), other(end)" << endl;
+//        getline(cin, select);
+//        if (select.compare("0") and select.compare("1") and select.compare("2") and select.compare("3")) {
+//            break;
+//        }
+//
+//        cout << "input text/file-path: ";
+//        getline(cin, text);
+//        cout << "input key: ";
+//        getline(cin, key);
+//        cout << "input mode(0:ECB, 1:CBC, 2:CFB, 3:OFB, 4:CTR): ";
+//        getline(cin, mode);
+//        cout << "result: ";
+//
+//		clock_t start = clock(), end;
+//
+//        try {
+//            cout << EncryptDecrypt::run(text, key, mode, atoi(select.c_str()) & 2, atoi(select.c_str()) & 1) << endl;
+//        } catch (const char *error) {
+//            cout << error << endl;
+//        }
+//        end = clock();
+//        cout << "The run time is:" <<(double)(end - start) / CLOCKS_PER_SEC << "s" << endl << endl;
+//
+//    }
 
     return 0;
 }

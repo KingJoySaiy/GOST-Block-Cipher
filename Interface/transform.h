@@ -96,14 +96,17 @@ namespace TRANSFORM {
     static string readFile(const string &filePath) {
 
         std::fstream file;
-        file.open(filePath, std::ios::in);
+        file.open(filePath, std::fstream::in | std::fstream::binary);
         if (file.fail()) {
             throw "fail to read file";
         }
         string text;
         char c;
-        while (!file.eof()) {   //read file
-            if ((c = file.get()) == EOF) continue;   //dismiss EOF
+//        while (!file.eof()) {   //read file
+//            if ((c = file.get()) == EOF) continue;   //dismiss EOF
+//            text.push_back(c);
+//        }
+        while (file.read((char*)&c, sizeof(c))) {
             text.push_back(c);
         }
         file.close();
@@ -113,9 +116,12 @@ namespace TRANSFORM {
     static string writeFile(const string &filePath, const string &text) {
 
         std::fstream file;
-        file.open(filePath, std::ios::out);
-        for (auto &c : text) {  //write back to the file
-            file.put(c);
+        file.open(filePath, std::fstream::out | std::fstream::binary);
+//        for (auto &c : text) {  //write back to the file
+//            file.put(c);
+//        }
+        for (auto &p : text) {
+            file.write((char*)&p, sizeof(p));
         }
         file.close();
         return "succeed to write the file";

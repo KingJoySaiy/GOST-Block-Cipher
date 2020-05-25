@@ -52,17 +52,6 @@ void blockCipherTest() {    //ok
     cout << res4 << ' ' << EncryptDecrypt::run(res4, key, "4", true, false) << endl;
 }
 
-void fileTest() {   //need to read & write file in binary mode
-
-    string x = "../233.txt", y = "../Sugar.mp3";
-    string key = "key";
-//    cout << EncryptDecrypt::run(x, key, "0", false, true) << endl;
-    cout << EncryptDecrypt::run(x, key, "0", true, true) << endl;
-
-//    EncryptDecrypt::run(y, key, 0, true, 1);
-//    EncryptDecrypt::run(y, key, 0, false, 1.1);
-}
-
 void specialTest() {
 
     string x = "asoinfu124", key = "233";
@@ -72,6 +61,34 @@ void specialTest() {
 //    cout << EncryptDecrypt::run(badPath, key, "3", false, true) << endl;
 //    cout << EncryptDecrypt::run("166cf3f52702055c", "", "1", true, false) << endl;
     cout << EncryptDecrypt::run("", "", "0", true, false) << endl;
+}
+
+void timeTest() {
+
+    clock_t start = clock(), end;
+    string filePath = "C:\\Users\\Joy\\Desktop\\testFile";
+    string key = "233", mode = "3";
+    for (int i = 0; i < 10; i++) {
+        try {
+            //succeed to write the file
+            cout << EncryptDecrypt::run(filePath, key, mode, false, true) << endl;
+        } catch (const char *error) {
+            cout << error << endl;
+        }
+    }
+    end = clock();
+    cout << "The run time is:" <<(double)(end - start) / CLOCKS_PER_SEC << "s" << endl << endl;
+}
+
+void fileTest() {   //need to read & write file in binary mode
+
+    string x = "C:\\KingJoySaiy\\workspace\\in.txt", y = "C:\\KingJoySaiy\\workspace\\BAE BAE.mp3";
+    string key = "key";
+//    cout << EncryptDecrypt::run(x, key, "0", false, true) << endl;
+//    cout << EncryptDecrypt::run(x, key, "0", true, true) << endl;
+
+    cout << EncryptDecrypt::run(y, key, "0", false, true) << endl;
+    cout << EncryptDecrypt::run(y, key, "0", true, true) << endl;
 }
 
 
