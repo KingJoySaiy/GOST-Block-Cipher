@@ -9,7 +9,7 @@
 
 using namespace std;
 
-void ripemdTest() { //almost ok
+void ripemdTest() { //ok
 
     string x = "";
     uint32_t message[8];
@@ -52,7 +52,7 @@ void blockCipherTest() {    //ok
     cout << res4 << ' ' << EncryptDecrypt::run(res4, key, "4", true, false) << endl;
 }
 
-void specialTest() {
+void specialTest() {    //ok
 
     string x = "asoinfu124", key = "233";
     string goodPath = "../233.txt", badPath = "test.txt";
@@ -63,7 +63,7 @@ void specialTest() {
     cout << EncryptDecrypt::run("", "", "0", true, false) << endl;
 }
 
-void timeTest() {
+void timeTest() {   //ok
 
     clock_t start = clock(), end;
     string filePath = "C:\\Users\\Joy\\Desktop\\testFile";
@@ -80,17 +80,20 @@ void timeTest() {
     cout << "The run time is:" <<(double)(end - start) / CLOCKS_PER_SEC << "s" << endl << endl;
 }
 
-void fileTest() {   //need to read & write file in binary mode
+void fileTest() {   //ok
 
-    string x = "C:\\KingJoySaiy\\workspace\\in.txt", y = "C:\\KingJoySaiy\\workspace\\BAE BAE.mp3";
+    string x = "C:\\KingJoySaiy\\workspace\\in.txt", y = "C:\\KingJoySaiy\\workspace\\GOST-Block-Cipher\\Test\\BAE BAE.mp3";
+    string z = "C:\\KingJoySaiy\\workspace\\GOST-Block-Cipher\\Test\\Chinese.txt";
     string key = "key";
 //    cout << EncryptDecrypt::run(x, key, "0", false, true) << endl;
 //    cout << EncryptDecrypt::run(x, key, "0", true, true) << endl;
 
-    cout << EncryptDecrypt::run(y, key, "0", false, true) << endl;
-    cout << EncryptDecrypt::run(y, key, "0", true, true) << endl;
-}
+//    cout << EncryptDecrypt::run(y, key, "0", false, true) << endl;
+//    cout << EncryptDecrypt::run(y, key, "0", true, true) << endl;
 
+    cout << EncryptDecrypt::run(z, key, "2", false, true) << endl;
+    cout << EncryptDecrypt::run(z, key, "2", true, true) << endl;
+}
 
 #endif //GOST_TEST_H
 

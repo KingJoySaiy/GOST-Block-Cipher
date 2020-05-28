@@ -56,7 +56,7 @@ namespace TRANSFORM {
         vector<uint64_t> res;   //8 characters as a block64
         uint64_t tmp = 0;
         for (int i = 0; i < str.length(); i++) {
-            tmp = (tmp << 8) + str[i];
+            tmp = (tmp << 8) + str[i] + 128;    //char ranged in [-128 ~ 127]
             if (i % 8 == 7) {
                 res.push_back(tmp);
                 tmp = 0;
@@ -75,7 +75,7 @@ namespace TRANSFORM {
         for (auto &text : texts) {  //append text to res
             tmp.clear();
             for (int i = 0; i < 8; i++) {
-                tmp.push_back(text % (1ULL << 8));
+                tmp.push_back((text % (1ULL << 8)) - 128);  //char ranged in [-128 ~ 127], not in [0, 255]
                 text >>= 8;
             }
             reverse(tmp.begin(), tmp.end());
@@ -93,33 +93,38 @@ namespace TRANSFORM {
         return res;
     }
 
-    static string readFile(const string &filePath) {
+    static string getFilePath(const string &filePath) { //replace '\' to '\\'
+
+        string res;
+        for (auto &c : filePath) {
+            if (c == '\\') {
+                res += "\\\\";
+            } else res.push_back(c);
+        }
+        return res;
+    }
+
+    static string readFile(const string &filePath) {    //read file in binary mode
 
         std::fstream file;
-        file.open(filePath, std::fstream::in | std::fstream::binary);
+        file.open(getFilePath(filePath), std::fstream::in | std::fstream::binary);
+
         if (file.fail()) {
             throw "fail to read file";
         }
         string text;
         char c;
-//        while (!file.eof()) {   //read file
-//            if ((c = file.get()) == EOF) continue;   //dismiss EOF
-//            text.push_back(c);
-//        }
-        while (file.read((char*)&c, sizeof(c))) {
+        while (file.read((char*)&c, sizeof(char))) {
             text.push_back(c);
         }
         file.close();
         return text;
     }
 
-    static string writeFile(const string &filePath, const string &text) {
+    static string writeFile(const string &filePath, const string &text) {   //write file in binary mode
 
         std::fstream file;
         file.open(filePath, std::fstream::out | std::fstream::binary);
-//        for (auto &c : text) {  //write back to the file
-//            file.put(c);
-//        }
         for (auto &p : text) {
             file.write((char*)&p, sizeof(p));
         }
