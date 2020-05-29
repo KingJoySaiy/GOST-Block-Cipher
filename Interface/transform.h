@@ -47,7 +47,7 @@ namespace TRANSFORM {
 
     static vector<uint64_t> expandGost(string str) {    //expand string to 64-bit
 
-        int zero = 0;
+        uint64_t zero = 0;
         while (str.length() % 8) {  //append 0 in the back
             str.push_back(0);
             zero++;
@@ -108,7 +108,6 @@ namespace TRANSFORM {
 
         std::fstream file;
         file.open(getFilePath(filePath), std::fstream::in | std::fstream::binary);
-
         if (file.fail()) {
             throw "fail to read file";
         }
@@ -124,11 +123,11 @@ namespace TRANSFORM {
     static string writeFile(const string &filePath, const string &text) {   //write file in binary mode
 
         std::fstream file;
-        file.open(filePath, std::fstream::out | std::fstream::binary);
-        for (auto &p : text) {
-            file.write((char*)&p, sizeof(p));
-        }
-        file.close();
+file.open(filePath, std::fstream::out | std::fstream::binary);
+for (auto &p : text) {
+    file.write((char*)&p, sizeof(p));
+}
+file.close();
         return "succeed to write the file";
     }
 };

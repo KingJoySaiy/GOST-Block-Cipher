@@ -1,3 +1,0 @@
-C:/KingJoySaiy/workspace/GOST-Block-Cipher/cmake-build-debug/CMakeFiles/GOST.dir
-C:/KingJoySaiy/workspace/GOST-Block-Cipher/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/KingJoySaiy/workspace/GOST-Block-Cipher/cmake-build-debug/CMakeFiles/rebuild_cache.dir

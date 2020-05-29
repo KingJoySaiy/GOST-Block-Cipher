@@ -6,6 +6,8 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
 
+//    specialTest();
+//    return 0;
 //    fileTest();
     string select, text, key, mode;
     while (true) {
@@ -25,7 +27,7 @@ int main(int argc, char *argv[]) {
         cout << "result: ";
 
         //used to calculate run-time
-//		clock_t start = clock(), end;
+		clock_t start = clock(), end;
 
         try {
             cout << EncryptDecrypt::run(text, key, mode, atoi(select.c_str()) & 2, atoi(select.c_str()) & 1) << endl;
@@ -33,10 +35,11 @@ int main(int argc, char *argv[]) {
             cout << error << endl;
         }
 
-//        end = clock();
-//        cout << "The run time is:" <<(double)(end - start) / CLOCKS_PER_SEC << "s" << endl << endl;
+        end = clock();
+        cout << "The run time is:" <<(double)(end - start) / CLOCKS_PER_SEC << "s" << endl << endl;
 
     }
 
     return 0;
 }
+//C:\KingJoySaiy\workspace\GOST-Block-Cipher\Test\The Valley Of The Wind.mkv
