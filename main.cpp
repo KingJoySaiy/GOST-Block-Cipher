@@ -1,14 +1,10 @@
 #include <bits/stdc++.h>
 #include "Interface/EncryptDecrypt.h"
-#include "Test/test.h"
 
 using namespace std;
 
 int main(int argc, char *argv[]) {
 
-//    specialTest();
-//    return 0;
-//    fileTest();
     string select, text, key, mode;
     while (true) {
         cout << "select operation: 0(encrypt string), 1(encrypt file), " << endl;
@@ -42,4 +38,3 @@ int main(int argc, char *argv[]) {
 
     return 0;
 }
-//C:\KingJoySaiy\workspace\GOST-Block-Cipher\Test\The Valley Of The Wind.mkv

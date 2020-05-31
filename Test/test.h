@@ -88,11 +88,11 @@ void fileTest() {   //ok
 //    cout << EncryptDecrypt::run(x, key, "0", false, true) << endl;
 //    cout << EncryptDecrypt::run(x, key, "0", true, true) << endl;
 
-//    cout << EncryptDecrypt::run(y, key, "0", false, true) << endl;
-//    cout << EncryptDecrypt::run(y, key, "0", true, true) << endl;
+    cout << EncryptDecrypt::run(y, key, "0", false, true) << endl;
+    cout << EncryptDecrypt::run(y, key, "0", true, true) << endl;
 
-    cout << EncryptDecrypt::run(z, key, "2", false, true) << endl;
-    cout << EncryptDecrypt::run(z, key, "2", true, true) << endl;
+//    cout << EncryptDecrypt::run(z, key, "2", false, true) << endl;
+//    cout << EncryptDecrypt::run(z, key, "2", true, true) << endl;
 }
 
 #endif //GOST_TEST_H

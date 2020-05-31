@@ -93,27 +93,16 @@ namespace TRANSFORM {
         return res;
     }
 
-    static string getFilePath(const string &filePath) { //replace '\' to '\\'
-
-        string res;
-        for (auto &c : filePath) {
-            if (c == '\\') {
-                res += "\\\\";
-            } else res.push_back(c);
-        }
-        return res;
-    }
-
     static string readFile(const string &filePath) {    //read file in binary mode
 
         std::fstream file;
-        file.open(getFilePath(filePath), std::fstream::in | std::fstream::binary);
+        file.open(filePath, std::fstream::in | std::fstream::binary);
         if (file.fail()) {
             throw "fail to read file";
         }
         string text;
         char c;
-        while (file.read((char*)&c, sizeof(char))) {
+        while (file.read((char *) &c, sizeof(char))) {
             text.push_back(c);
         }
         file.close();
@@ -123,11 +112,11 @@ namespace TRANSFORM {
     static string writeFile(const string &filePath, const string &text) {   //write file in binary mode
 
         std::fstream file;
-file.open(filePath, std::fstream::out | std::fstream::binary);
-for (auto &p : text) {
-    file.write((char*)&p, sizeof(p));
-}
-file.close();
+        file.open(filePath, std::fstream::out | std::fstream::binary);
+        for (auto &p : text) {
+            file.write((char *) &p, sizeof(p));
+        }
+        file.close();
         return "succeed to write the file";
     }
 };
